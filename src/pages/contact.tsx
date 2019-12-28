@@ -1,11 +1,12 @@
 import React from "react"
+import { Link } from "gatsby"
 import Header from "../components/header"
 
 const Component: React.FC = () => (
   <div style={{ color: `teal` }}>
-    <Header headerText="About Gatsby" />
-    <Header headerText="It's pretty cool" />
-    <p>Such wow. Very React.</p>
+    <Link to="/">Home</Link>
+    <Header headerText="Contact" />
+    <p>Send us a message!</p>
   </div>
 )
 
