@@ -13,6 +13,12 @@ module.exports = {
       options: {
         fileName: `types/graphql-types.d.ts`
       }
+    },
+    {
+      resolve: `gatsby-plugin-typography`,
+      options: {
+        pathToConfigModule: `src/utils/typography`,
+      },
     }
   ]
 }
