@@ -76,6 +76,8 @@ export type Directory = Node & {
   ctime: Scalars['Date'],
   birthtime?: Maybe<Scalars['Date']>,
   birthtimeMs?: Maybe<Scalars['Float']>,
+  blksize?: Maybe<Scalars['Int']>,
+  blocks?: Maybe<Scalars['Int']>,
   id: Scalars['ID'],
   parent?: Maybe<Node>,
   children: Array<Node>,
@@ -197,6 +199,8 @@ export type DirectoryFieldsEnum =
   'ctime' |
   'birthtime' |
   'birthtimeMs' |
+  'blksize' |
+  'blocks' |
   'id' |
   'parent___id' |
   'parent___parent___id' |
@@ -316,6 +320,8 @@ export type DirectoryFilterInput = {
   ctime?: Maybe<DateQueryOperatorInput>,
   birthtime?: Maybe<DateQueryOperatorInput>,
   birthtimeMs?: Maybe<FloatQueryOperatorInput>,
+  blksize?: Maybe<IntQueryOperatorInput>,
+  blocks?: Maybe<IntQueryOperatorInput>,
   id?: Maybe<StringQueryOperatorInput>,
   parent?: Maybe<NodeFilterInput>,
   children?: Maybe<NodeFilterListInput>,
@@ -368,6 +374,10 @@ export type File = Node & {
   ctime: Scalars['Date'],
   birthtime?: Maybe<Scalars['Date']>,
   birthtimeMs?: Maybe<Scalars['Float']>,
+  blksize?: Maybe<Scalars['Int']>,
+  blocks?: Maybe<Scalars['Int']>,
+  /** Copy file to static directory and return public url to it */
+  publicURL?: Maybe<Scalars['String']>,
   id: Scalars['ID'],
   parent?: Maybe<Node>,
   children: Array<Node>,
@@ -489,6 +499,9 @@ export type FileFieldsEnum =
   'ctime' |
   'birthtime' |
   'birthtimeMs' |
+  'blksize' |
+  'blocks' |
+  'publicURL' |
   'id' |
   'parent___id' |
   'parent___parent___id' |
@@ -608,6 +621,9 @@ export type FileFilterInput = {
   ctime?: Maybe<DateQueryOperatorInput>,
   birthtime?: Maybe<DateQueryOperatorInput>,
   birthtimeMs?: Maybe<FloatQueryOperatorInput>,
+  blksize?: Maybe<IntQueryOperatorInput>,
+  blocks?: Maybe<IntQueryOperatorInput>,
+  publicURL?: Maybe<StringQueryOperatorInput>,
   id?: Maybe<StringQueryOperatorInput>,
   parent?: Maybe<NodeFilterInput>,
   children?: Maybe<NodeFilterListInput>,
@@ -747,6 +763,9 @@ export type QueryFileArgs = {
   ctime?: Maybe<DateQueryOperatorInput>,
   birthtime?: Maybe<DateQueryOperatorInput>,
   birthtimeMs?: Maybe<FloatQueryOperatorInput>,
+  blksize?: Maybe<IntQueryOperatorInput>,
+  blocks?: Maybe<IntQueryOperatorInput>,
+  publicURL?: Maybe<StringQueryOperatorInput>,
   id?: Maybe<StringQueryOperatorInput>,
   parent?: Maybe<NodeFilterInput>,
   children?: Maybe<NodeFilterListInput>,
@@ -794,6 +813,8 @@ export type QueryDirectoryArgs = {
   ctime?: Maybe<DateQueryOperatorInput>,
   birthtime?: Maybe<DateQueryOperatorInput>,
   birthtimeMs?: Maybe<FloatQueryOperatorInput>,
+  blksize?: Maybe<IntQueryOperatorInput>,
+  blocks?: Maybe<IntQueryOperatorInput>,
   id?: Maybe<StringQueryOperatorInput>,
   parent?: Maybe<NodeFilterInput>,
   children?: Maybe<NodeFilterListInput>,
@@ -1220,6 +1241,7 @@ export type SitePageFieldsEnum =
   'pluginCreator___version' |
   'pluginCreator___pluginOptions___fileName' |
   'pluginCreator___pluginOptions___pathToConfigModule' |
+  'pluginCreator___pluginOptions___name' |
   'pluginCreator___pluginOptions___path' |
   'pluginCreator___pluginOptions___pathCheck' |
   'pluginCreator___nodeAPIs' |
@@ -1409,6 +1431,7 @@ export type SitePluginFieldsEnum =
   'version' |
   'pluginOptions___fileName' |
   'pluginOptions___pathToConfigModule' |
+  'pluginOptions___name' |
   'pluginOptions___path' |
   'pluginOptions___pathCheck' |
   'nodeAPIs' |
@@ -1528,6 +1551,7 @@ export type SitePluginPackageJsonPeerDependenciesFilterListInput = {
 export type SitePluginPluginOptions = {
   fileName?: Maybe<Scalars['String']>,
   pathToConfigModule?: Maybe<Scalars['String']>,
+  name?: Maybe<Scalars['String']>,
   path?: Maybe<Scalars['String']>,
   pathCheck?: Maybe<Scalars['Boolean']>,
 };
@@ -1535,6 +1559,7 @@ export type SitePluginPluginOptions = {
 export type SitePluginPluginOptionsFilterInput = {
   fileName?: Maybe<StringQueryOperatorInput>,
   pathToConfigModule?: Maybe<StringQueryOperatorInput>,
+  name?: Maybe<StringQueryOperatorInput>,
   path?: Maybe<StringQueryOperatorInput>,
   pathCheck?: Maybe<BooleanQueryOperatorInput>,
 };
@@ -1570,12 +1595,17 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>,
 };
 
-export type LayoutSiteQueryVariables = {};
+export type LayoutComponentQueryVariables = {};
 
 
-export type LayoutSiteQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+export type LayoutComponentQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
-export type AboutSiteQueryVariables = {};
+export type AboutPageQueryVariables = {};
 
 
-export type AboutSiteQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+export type AboutPageQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+
+export type MyFilesPageQueryVariables = {};
+
+
+export type MyFilesPageQuery = { allFile: { edges: Array<{ node: Pick<File, 'relativePath' | 'prettySize' | 'extension' | 'birthTime'> }> } };

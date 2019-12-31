@@ -17,7 +17,6 @@ const Component: React.FC = ({ children }) => {
       }
     `
   )
-
   return (
     <div
       css={css`
