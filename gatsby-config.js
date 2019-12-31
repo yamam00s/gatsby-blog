@@ -8,6 +8,7 @@ module.exports = {
   /* Your site config here */
   plugins: [
     `gatsby-plugin-typescript`,
+    `gatsby-plugin-emotion`,
     {
       resolve: 'gatsby-plugin-graphql-codegen',
       options: {
