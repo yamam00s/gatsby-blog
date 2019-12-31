@@ -1,14 +1,14 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import { AboutSiteQuery } from "../../types/graphql-types"
+import { AboutPageQuery } from "../../types/graphql-types"
 
 type AboutData = {
-  data: AboutSiteQuery
+  data: AboutPageQuery
 }
 
 export const pageQuery = graphql`
-  query AboutSite {
+  query AboutPage {
     site {
       siteMetadata {
         title

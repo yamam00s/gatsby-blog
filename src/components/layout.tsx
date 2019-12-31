@@ -2,13 +2,13 @@ import React from "react"
 import { css } from "@emotion/core"
 import { useStaticQuery, Link, graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
-import { LayoutSiteQuery } from "../../types/graphql-types"
+import { LayoutComponentQuery } from "../../types/graphql-types"
 
 const Component: React.FC = ({ children }) => {
   // useStaticQueryは関数コンポーネントの本体でしか呼び出せない
-  const data: LayoutSiteQuery = useStaticQuery(
+  const data: LayoutComponentQuery = useStaticQuery(
     graphql`
-      query LayoutSite {
+      query LayoutComponent {
         site {
           siteMetadata {
             title
