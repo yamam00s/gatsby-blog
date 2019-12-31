@@ -13,6 +13,7 @@ module.exports = {
     `gatsby-plugin-typescript`,
     `gatsby-plugin-emotion`,
     {
+      // graphqlの型を自動生成する
       resolve: 'gatsby-plugin-graphql-codegen',
       options: {
         fileName: `types/graphql-types.d.ts`
@@ -25,11 +26,14 @@ module.exports = {
       },
     },
     {
+      // ファイルシステムのソースを取得
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `src`,
         path: `${__dirname}/src/`,
       },
     },
+    // マークダウンファイルを変換して取得
+    `gatsby-transformer-remark`,
   ]
 }
