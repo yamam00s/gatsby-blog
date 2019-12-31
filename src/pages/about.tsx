@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { AboutSiteQuery } from "../../types/graphql-types"
 
-type aboutData = {
+type AboutData = {
   data: AboutSiteQuery
 }
 
@@ -16,7 +16,7 @@ export const pageQuery = graphql`
     }
   }
 `
-const Component: React.FC<aboutData> = ({ data }) => (
+const Component: React.FC<AboutData> = ({ data }) => (
   <Layout>
     <h1>About {data.site.siteMetadata.title}</h1>
     <p>

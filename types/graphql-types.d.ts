@@ -1570,6 +1570,11 @@ export type StringQueryOperatorInput = {
   glob?: Maybe<Scalars['String']>,
 };
 
+export type LayoutSiteQueryVariables = {};
+
+
+export type LayoutSiteQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
+
 export type AboutSiteQueryVariables = {};
 
 
