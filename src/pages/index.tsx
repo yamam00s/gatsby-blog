@@ -11,7 +11,9 @@ type IndexData = {
 
 export const pageQuery = graphql`
   query IndexPage {
-    allMarkdownRemark {
+    allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       totalCount
       edges {
         node {
