@@ -2004,3 +2004,13 @@ export type MyFilesPageQueryVariables = {};
 
 
 export type MyFilesPageQuery = { allFile: { edges: Array<{ node: Pick<File, 'relativePath' | 'prettySize' | 'extension' | 'birthTime'> }> } };
+
+export type BlogPostPageQueryVariables = {
+  slug: Scalars['String']
+};
+
+
+export type BlogPostPageQuery = { markdownRemark: Maybe<(
+    Pick<MarkdownRemark, 'html'>
+    & { frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title'>> }
+  )> };
