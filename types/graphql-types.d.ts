@@ -1996,7 +1996,7 @@ export type IndexPageQuery = { allMarkdownRemark: (
     Pick<MarkdownRemarkConnection, 'totalCount'>
     & { edges: Array<{ node: (
         Pick<MarkdownRemark, 'id' | 'excerpt'>
-        & { frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'date'>> }
+        & { frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'date'>>, fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>> }
       ) }> }
   ) };
 
