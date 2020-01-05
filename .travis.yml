@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - 12.13.0
+after_success:
+  - firebase-ci deploy
+branches:
+  only:
+    - master
+script:
+  - echo "Deploy"
+deploy:
+  provider: firebase
+  skip_cleanup: true
+  token:
+    secure: $FIREBASE_TOKEN
+  project: $FIREBASE_PROJECT
