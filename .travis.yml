@@ -4,8 +4,6 @@ node_js:
 branches:
   only:
     - master
-script:
-  - 'yarn build'
 deploy:
   provider: firebase
   skip_cleanup: true
