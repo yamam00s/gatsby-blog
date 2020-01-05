@@ -22,7 +22,6 @@ export const query = graphql`
   }
 `
 const Component: React.FC<MyFilesData> = ({ data }) => {
-  console.log(data)
   return (
     <Layout>
       <div>
