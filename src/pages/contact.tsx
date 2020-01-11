@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
-import Header from "../components/header"
+import Header from "../components/Header/header"
 
 const Component: React.FC = () => (
   <div style={{ color: `teal` }}>

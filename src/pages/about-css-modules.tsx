@@ -1,6 +1,6 @@
 import React from "react"
 const styles = require("./about-css-modules.module.css")
-import Container from "../components/container"
+import Container from "../components/Container/container"
 
 type User = {
   avatar: string

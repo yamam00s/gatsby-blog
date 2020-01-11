@@ -1,8 +1,8 @@
 import React from "react"
 import { css } from "@emotion/core"
 import { useStaticQuery, Link, graphql } from "gatsby"
-import { rhythm } from "../utils/typography"
-import { LayoutComponentQuery } from "../../types/graphql-types"
+import { rhythm } from "../../utils/typography"
+import { LayoutComponentQuery } from "../../../types/graphql-types"
 
 const Component: React.FC = ({ children }) => {
   // useStaticQueryは関数コンポーネントの本体でしか呼び出せない
