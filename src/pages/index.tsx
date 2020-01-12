@@ -11,6 +11,11 @@ type IndexData = {
 
 export const pageQuery = graphql`
   query IndexPage {
+    site {
+      siteMetadata {
+        title
+      }
+    }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
     ) {
@@ -32,47 +37,51 @@ export const pageQuery = graphql`
   }
 `
 
-const Component: React.FC<IndexData> = ({ data }) => (
-  <Layout>
-    <div>
-        <h1
-          css={css`
-            display: inline-block;
-            border-bottom: 1px solid;
-          `}
-        >
-          yamam00s blog
-        </h1>
-        <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
-        {data.allMarkdownRemark.edges.map(({ node }) => (
-          <div key={node.id}>
-            <Link
-              to={node.fields.slug}
-              css={css`
-                text-decoration: none;
-                color: inherit;
-              `}
-            >
-              <h3
+const Component: React.FC<IndexData> = ({ data }) => {
+  const { allMarkdownRemark, site } = data
+  return (
+    <Layout>
+      <div>
+          <h1
+            css={css`
+              display: inline-block;
+              border-bottom: 1px solid;
+            `}
+          >
+            yamam00s blog
+            {site.siteMetadata.title}
+          </h1>
+          <h4>{allMarkdownRemark.totalCount} Posts</h4>
+          {allMarkdownRemark.edges.map(({ node }) => (
+            <div key={node.id}>
+              <Link
+                to={node.fields.slug}
                 css={css`
-                  margin-bottom: ${rhythm(1 / 4)};
+                  text-decoration: none;
+                  color: inherit;
                 `}
               >
-                {node.frontmatter.title}{" "}
-                <span
+                <h3
                   css={css`
-                    color: #bbb;
+                    margin-bottom: ${rhythm(1 / 4)};
                   `}
                 >
-                  — {node.frontmatter.date}
-                </span>
-              </h3>
-              <p>{node.excerpt}</p>
-            </Link>
-          </div>
-        ))}
-      </div>
-  </Layout>
-)
+                  {node.frontmatter.title}{" "}
+                  <span
+                    css={css`
+                      color: #bbb;
+                    `}
+                  >
+                    — {node.frontmatter.date}
+                  </span>
+                </h3>
+                <p>{node.excerpt}</p>
+              </Link>
+            </div>
+          ))}
+        </div>
+    </Layout>
+  )
+}
 
 export default Component

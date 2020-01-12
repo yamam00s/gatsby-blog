@@ -1992,7 +1992,7 @@ export type AboutPageQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMe
 export type IndexPageQueryVariables = {};
 
 
-export type IndexPageQuery = { allMarkdownRemark: (
+export type IndexPageQuery = { site: Maybe<{ siteMetadata: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, allMarkdownRemark: (
     Pick<MarkdownRemarkConnection, 'totalCount'>
     & { edges: Array<{ node: (
         Pick<MarkdownRemark, 'id' | 'excerpt'>
