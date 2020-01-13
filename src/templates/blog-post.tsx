@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout/layout"
 import Tag from "../components/Tag/tag"
 import { BlogPostPageQuery } from "../../types/graphql-types"
+const styles = require("./blog-post.module.css")
 
 type BlogPostData = {
   data: BlogPostPageQuery
@@ -14,6 +15,7 @@ export const query = graphql`
       html
       frontmatter {
         title
+        tags
       }
     }
   }
@@ -26,6 +28,11 @@ const Component: React.FC<BlogPostData> = ({ data }) => {
       <div>
         <h1>{post.frontmatter.title}</h1>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
+      </div>
+      <div className={styles.tags}>
+          {post.frontmatter.tags.map((tag: string ) => (
+            <Tag name={tag}></Tag>
+          ))}
       </div>
     </Layout>
   )

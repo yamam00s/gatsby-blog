@@ -2016,5 +2016,5 @@ export type BlogPostPageQueryVariables = {
 
 export type BlogPostPageQuery = { markdownRemark: Maybe<(
     Pick<MarkdownRemark, 'html'>
-    & { frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title'>> }
+    & { frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'tags'>> }
   )> };

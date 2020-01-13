@@ -1,4 +1,11 @@
 .tag {
-  padding: 0.5rem 1rem;
-  background: red;
+  margin: 0.3rem;
+  padding: 0.3rem 1rem;
+  background:#9f392b;
+  font-size: 0.7rem;
+}
+
+.tag a {
+  color: #fff;
+  text-decoration: none;
 }
