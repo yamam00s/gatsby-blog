@@ -35,5 +35,6 @@ module.exports = {
     },
     // マークダウンファイルを変換して取得
     `gatsby-transformer-remark`,
+    'gatsby-plugin-sass'
   ]
 }

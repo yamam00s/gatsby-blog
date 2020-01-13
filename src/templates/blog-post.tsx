@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import Layout from "../components/Layout/layout"
 import Tag from "../components/Tag/tag"
 import { BlogPostPageQuery } from "../../types/graphql-types"
-const styles = require("./blog-post.module.css")
+const styles = require("./blog-post.module.scss")
 
 type BlogPostData = {
   data: BlogPostPageQuery

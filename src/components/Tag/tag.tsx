@@ -1,5 +1,5 @@
 import React from "react"
-const styles = require("./tag.module.css")
+const styles = require("./tag.module.scss")
 
 type Tag = {
   name: string

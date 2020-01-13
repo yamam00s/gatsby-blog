@@ -5,7 +5,7 @@ import { rhythm } from "../utils/typography"
 import Layout from "../components/Layout/layout"
 import Tag from "../components/Tag/tag"
 import { IndexPageQuery } from "../../types/graphql-types"
-const styles = require("./index.module.css")
+const styles = require("./index.module.scss")
 
 type IndexData = {
   data: IndexPageQuery
