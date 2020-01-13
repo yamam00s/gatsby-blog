@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/Layout/layout"
+import Tag from "../components/Tag/tag"
 import { BlogPostPageQuery } from "../../types/graphql-types"
 
 type BlogPostData = {
