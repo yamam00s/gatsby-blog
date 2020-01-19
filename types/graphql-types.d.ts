@@ -2021,3 +2021,16 @@ export type BlogPostPageQuery = { markdownRemark: Maybe<(
     Pick<MarkdownRemark, 'html'>
     & { frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'tags'>> }
   )> };
+
+export type TagIndexPageQueryVariables = {
+  tag?: Maybe<Array<Scalars['String']>>
+};
+
+
+export type TagIndexPageQuery = { allMarkdownRemark: (
+    Pick<MarkdownRemarkConnection, 'totalCount'>
+    & { edges: Array<{ node: (
+        Pick<MarkdownRemark, 'id' | 'excerpt'>
+        & { frontmatter: Maybe<Pick<MarkdownRemarkFrontmatter, 'title' | 'date' | 'tags'>>, fields: Maybe<Pick<MarkdownRemarkFields, 'slug'>> }
+      ) }> }
+  ) };
