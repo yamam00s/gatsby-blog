@@ -1,24 +1,9 @@
 import * as path from "path"
 import { GatsbyNode } from "gatsby"
 import { MarkdownRemarkConnection } from "../types/graphql-types"
-import { createFilePath } from "gatsby-source-filesystem"
 
 type Result = {
   allMarkdownRemark: MarkdownRemarkConnection
-}
-
-export const onCreateNode: GatsbyNode["onCreateNode"] = ({
-  node, getNode, actions
-}) => {
-  const { createNodeField } = actions
-  if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` })
-    createNodeField({
-      node,
-      name: `slug`,
-      value: slug,
-    })
-  }
 }
 
 export const createPages: GatsbyNode["createPages"] = async({
