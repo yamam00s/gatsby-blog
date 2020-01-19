@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "gatsby"
 const styles = require("./tag.module.scss")
 
 type Tag = {
@@ -7,9 +8,9 @@ type Tag = {
 
 const Component: React.FC<Tag> = ({ name }) => (
   <div className={styles.tag}>
-    <a href="">
+    <Link to={`/tag/${name}`}>
       {name}
-    </a>
+    </Link>
   </div>
 )
 export default Component

@@ -6,6 +6,10 @@ type Result = {
   allMarkdownRemark: MarkdownRemarkConnection
 }
 
+export type TagIndexPageContext = {
+  tag: string
+}
+
 export const createPages: GatsbyNode["createPages"] = async({
   graphql, actions
 }) => {
