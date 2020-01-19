@@ -10,6 +10,8 @@ export const createPages: GatsbyNode["createPages"] = async({
   graphql, actions
 }) => {
   const { createPage } = actions
+  const tagsSet = new Set<string>()
+
   const result = await graphql<Result>(`
     query CreatePages {
       allMarkdownRemark {
@@ -18,20 +20,40 @@ export const createPages: GatsbyNode["createPages"] = async({
             fields {
               slug
             }
+            frontmatter {
+              tags
+            }
           }
         }
       }
     }
   `)
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  const { edges } = result.data.allMarkdownRemark;
+
+  edges.forEach(({ node }) => {
+    const { fields, frontmatter } = node;
+    const { tags } = frontmatter;
+    const { slug } = fields;
+    tags.forEach(tag => tagsSet.add(tag))
+
     createPage({
-      path: node.fields.slug,
+      path: slug,
       component: path.resolve(`./src/templates/blog-post.tsx`),
       context: {
         // Data passed to context is available
         // in page queries as GraphQL variables.
-        slug: node.fields.slug,
+        slug,
       },
+    })
+  })
+
+  tagsSet.forEach((tag) => {
+    createPage({
+      path: `/tag/${tag}`,
+      component: path.resolve(`./src/templates/tag-index.tsx`),
+      context: {
+        tag
+      }
     })
   })
 }

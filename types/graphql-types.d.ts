@@ -1480,10 +1480,12 @@ export type SitePageConnectionGroupArgs = {
 
 export type SitePageContext = {
   slug?: Maybe<Scalars['String']>,
+  tag?: Maybe<Scalars['String']>,
 };
 
 export type SitePageContextFilterInput = {
   slug?: Maybe<StringQueryOperatorInput>,
+  tag?: Maybe<StringQueryOperatorInput>,
 };
 
 export type SitePageEdge = {
@@ -1585,6 +1587,7 @@ export type SitePageFieldsEnum =
   'componentChunkName' |
   'isCreatedByStatefulCreatePages' |
   'context___slug' |
+  'context___tag' |
   'pluginCreator___id' |
   'pluginCreator___parent___id' |
   'pluginCreator___parent___parent___id' |
