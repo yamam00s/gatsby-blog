@@ -1,11 +1,9 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 import { css } from "@emotion/core"
-import { rhythm } from "../utils/typography"
 import Layout from "../components/Layout/layout"
-import Tag from "../components/Tag/tag"
+import ArticleList from "../components/ArticleList/articleList"
 import { IndexPageQuery } from "../../types/graphql-types"
-const styles = require("./index.module.scss")
 
 type IndexData = {
   data: IndexPageQuery
@@ -41,7 +39,7 @@ export const pageQuery = graphql`
 `
 
 const Component: React.FC<IndexData> = ({ data }) => {
-  const { allMarkdownRemark, site } = data
+  const { site } = data
   return (
     <Layout>
       <div>
@@ -53,39 +51,7 @@ const Component: React.FC<IndexData> = ({ data }) => {
           >
             {site.siteMetadata.title}
           </h1>
-          <h4>{allMarkdownRemark.totalCount} Posts</h4>
-          {allMarkdownRemark.edges.map(({ node }) => (
-            <div key={node.id}>
-              <Link
-                to={node.fields.slug}
-                css={css`
-                  text-decoration: none;
-                  color: inherit;
-                `}
-              >
-                <h3
-                  css={css`
-                    margin-bottom: ${rhythm(1 / 4)};
-                  `}
-                >
-                  {node.frontmatter.title}{" "}
-                  <span
-                    css={css`
-                      color: #bbb;
-                    `}
-                  >
-                    — {node.frontmatter.date}
-                  </span>
-                </h3>
-                <div className={styles.tags}>
-                  {node.frontmatter.tags.map((tag: string ) => (
-                    <Tag name={tag}></Tag>
-                  ))}
-                </div>
-                <p>{node.excerpt}</p>
-              </Link>
-            </div>
-          ))}
+          <ArticleList props={data}/>
         </div>
     </Layout>
   )
