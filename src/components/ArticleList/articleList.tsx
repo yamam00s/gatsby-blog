@@ -3,11 +3,11 @@ import { Link } from "gatsby"
 import { css } from "@emotion/core"
 import { rhythm } from "../../utils/typography"
 import Tag from "../Tag/tag"
-import { TagIndexPageQuery } from "../../../types/graphql-types"
+import { IndexPageQuery, TagIndexPageQuery } from "../../../types/graphql-types"
 const styles = require("./articleList.module.scss")
 
 type ArticleListProps = {
-  props: TagIndexPageQuery
+  props: IndexPageQuery | TagIndexPageQuery
 }
 
 // React.FCはchildren?: React.ReactNodeというpropsを受け取っている
