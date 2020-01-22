@@ -52,7 +52,7 @@ export const createPages: GatsbyNode["createPages"] = async({
   })
 
   tagsSet.forEach((tag) => {
-    createPage({
+    createPage<TagIndexPageContext>({
       path: `/tag/${tag}`,
       component: path.resolve(`./src/templates/tag-index.tsx`),
       context: {
